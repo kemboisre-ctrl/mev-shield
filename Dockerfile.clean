@@ -1,0 +1,31 @@
+FROM ubuntu:22.04
+
+WORKDIR /app
+
+# Copy only essential source files
+COPY src/ src/
+COPY config/ config/
+COPY CMakeLists.txt .
+
+# Install dependencies including rapidjson
+RUN apt update && apt install -y \
+    build-essential \
+    cmake \
+    libssl-dev \
+    libyaml-cpp-dev \
+    libboost-all-dev \
+    libcurl4-openssl-dev \
+    libspdlog-dev \
+    libfmt-dev \
+    pkg-config \
+    librapidjson-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Build the project
+RUN mkdir -p build && cd build && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release && \
+    make mev_shield -j$(nproc)
+
+EXPOSE 8765
+
+CMD ["./build/mev_shield"]

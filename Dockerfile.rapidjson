@@ -1,0 +1,36 @@
+FROM ubuntu:22.04
+
+WORKDIR /app
+
+# Copy source files
+COPY src/ src/
+COPY config/ config/
+COPY CMakeLists.txt .
+
+# Install all dependencies including rapidjson
+RUN apt update && apt install -y \
+    build-essential \
+    cmake \
+    libssl-dev \
+    libyaml-cpp-dev \
+    libboost-all-dev \
+    libcurl4-openssl-dev \
+    libspdlog-dev \
+    libfmt-dev \
+    pkg-config \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install rapidjson from source (more reliable than package)
+RUN git clone https://github.com/Tencent/rapidjson.git /tmp/rapidjson && \
+    cp -r /tmp/rapidjson/include/rapidjson /usr/include/ && \
+    rm -rf /tmp/rapidjson
+
+# Build the project
+RUN mkdir -p build && cd build && \
+    cmake .. -DCMAKE_BUILD_TYPE=Release && \
+    make mev_shield -j$(nproc)
+
+EXPOSE 8765
+
+CMD ["./build/mev_shield"]

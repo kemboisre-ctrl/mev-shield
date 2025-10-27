@@ -1,0 +1,74 @@
+cmake_minimum_required(VERSION 3.15)
+project(MEVShield)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Compiler optimizations
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra")
+
+# Include directories
+include_directories(
+    src
+    src/common
+    src/network
+    src/analytics
+    src/core
+)
+
+# Source files
+set(SOURCES
+    src/main.cpp
+    src/common/config_loader.cpp
+)
+
+# Create executable
+add_executable(mev_shield ${SOURCES})
+
+# Link libraries (Ubuntu package names)
+target_link_libraries(mev_shield
+    pthread
+    fmt
+    spdlog
+    yaml-cpp
+    jsoncpp
+    boost_system
+    boost_thread
+    ssl
+    crypto
+    curl
+)
+
+# Compiler definitions
+target_compile_definitions(mev_shield PRIVATE SPDLOG_FMT_EXTERNAL)
+
+# Add API server source
+set(SOURCES_WITH_API
+    src/main_with_api.cpp
+    src/common/config_loader.cpp
+    src/common/logger.hpp
+    src/analytics/risk_engine.hpp
+    src/network/mempool_monitor.hpp
+    src/network/rpc_client.hpp
+    src/network/api_server.hpp
+)
+
+# Create API-enabled executable
+add_executable(mev_shield_api ${SOURCES_WITH_API})
+
+# Link libraries (same as your existing setup)
+target_link_libraries(mev_shield_api
+    PRIVATE
+    CURL::libcurl
+    OpenSSL::SSL
+    OpenSSL::Crypto
+    spdlog::spdlog
+    yaml-cpp
+    Boost::system
+    Boost::thread
+    pthread
+    stdc++fs
+)
+
+# Add definitions
+target_compile_definitions(mev_shield_api PRIVATE SPDLOG_FMT_EXTERNAL)

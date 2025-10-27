@@ -1,0 +1,57 @@
+cmake_minimum_required(VERSION 3.15)
+project(MEVShield)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Compiler optimizations
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall -Wextra")
+
+# Find packages
+find_package(PkgConfig REQUIRED)
+
+# Find dependencies
+pkg_check_modules(YAML_CPP REQUIRED yaml-cpp)
+pkg_check_modules(LIBCURL REQUIRED libcurl)
+pkg_check_modules(OPENSSL REQUIRED openssl)
+pkg_check_modules(SPDLOG REQUIRED spdlog)
+
+# Find Boost
+find_package(Boost REQUIRED COMPONENTS system thread)
+
+# Include directories - add system include paths
+include_directories(
+    src
+    /usr/include
+    ${YAML_CPP_INCLUDE_DIRS}
+    ${SPDLOG_INCLUDE_DIRS}
+    ${Boost_INCLUDE_DIRS}
+)
+
+# Source files - use your original main.cpp
+file(GLOB_RECURSE SOURCES 
+    "src/*.cpp"
+    "src/*.hpp"
+)
+
+# Filter out test and debug files
+set(MAIN_SOURCES
+    src/main.cpp
+    src/common/config_loader.cpp
+)
+
+# Create executable
+add_executable(mev_shield ${MAIN_SOURCES})
+
+# Link libraries
+target_link_libraries(mev_shield
+    ${YAML_CPP_LIBRARIES}
+    ${LIBCURL_LIBRARIES}
+    ${OPENSSL_LIBRARIES}
+    ${SPDLOG_LIBRARIES}
+    ${Boost_LIBRARIES}
+    pthread
+)
+
+# Install target
+install(TARGETS mev_shield DESTINATION bin)

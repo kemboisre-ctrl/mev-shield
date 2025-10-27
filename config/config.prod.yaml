@@ -1,0 +1,27 @@
+primary_provider:
+  name: "infura"
+  websocket_url: "wss://mainnet.infura.io/ws/v3/c4ac605f5f484c73b8135c6f2ad20ec0"
+  priority: 1
+
+fallback_providers: []
+
+risk_settings:
+  min_profit_eth: 0.01
+  high_risk_slippage: 3.0
+  max_simulation_time_ms: 1000
+  max_gas_price_gwei: 150
+
+supported_dexs:
+  - "uniswap_v2"
+  - "uniswap_v3" 
+  - "sushiswap"
+
+supported_tokens:
+  - "WETH"
+  - "DAI"
+  - "USDC"
+  - "USDT"
+
+api_port: 8765
+max_connections: 100
+log_level: "info"

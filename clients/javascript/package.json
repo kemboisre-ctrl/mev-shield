@@ -1,0 +1,10 @@
+{
+  "name": "mev-shield-client",
+  "version": "0.1.0",
+  "description": "Node.js client for MEV Shield",
+  "main": "mev-shield-client.js",
+  "dependencies": {
+    "axios": "^1.0.0",
+    "ws": "^8.0.0"
+  }
+}

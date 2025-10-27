@@ -1,0 +1,35 @@
+FROM ubuntu:22.04
+
+# Install dependencies
+RUN apt update && apt install -y \
+    build-essential \
+    libssl-dev \
+    libyaml-cpp-dev \
+    libboost-system-dev \
+    g++ \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install cpprestsdk for HTTP API
+RUN git clone https://github.com/microsoft/cpprestsdk.git /tmp/cpprestsdk && \
+    cd /tmp/cpprestsdk && \
+    git submodule update --init && \
+    mkdir build && cd build && \
+    cmake .. -DCPPREST_EXCLUDE_WEBSOCKETS=ON && \
+    make -j4 && make install && \
+    cd / && rm -rf /tmp/cpprestsdk
+
+WORKDIR /app
+
+# Copy your files
+COPY mev_shield_integration.cpp .
+COPY config.yaml .
+
+# Compile
+RUN g++ -std=c++17 -O2 -o mev_shield mev_shield_integration.cpp \
+    -lyaml-cpp -lssl -lcrypto -lboost_system -lcpprest -lpthread
+
+# Expose API port
+EXPOSE 8765
+
+CMD ["./mev_shield"]

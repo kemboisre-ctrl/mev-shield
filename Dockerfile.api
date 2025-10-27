@@ -1,0 +1,32 @@
+FROM ubuntu:22.04
+
+# Install all dependencies from your CMakeLists.txt
+RUN apt update && apt install -y \
+    build-essential \
+    cmake \
+    libssl-dev \
+    libyaml-cpp-dev \
+    libboost-system-dev \
+    libboost-thread-dev \
+    libcurl4-openssl-dev \
+    libspdlog-dev \
+    libfmt-dev \
+    git \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy your entire project
+COPY . .
+
+# Build using your CMake setup
+RUN mkdir -p build && cd build && \
+    cmake .. && \
+    make mev_shield_api -j4
+
+# Expose API port
+EXPOSE 8765
+
+# Run the API-enabled version
+CMD ["./build/mev_shield_api"]

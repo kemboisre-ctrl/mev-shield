@@ -24,16 +24,10 @@ struct TransactionAnalysis {
 
 class RiskEngine {
 public:
-    // Add the constructor that your tests expect
+    // KEEP ONLY ONE CONSTRUCTOR to avoid ambiguity
     RiskEngine(double min_profit_threshold = 0.01, double high_risk_slippage = 3.0)
         : min_profit_threshold_(min_profit_threshold)
         , high_risk_slippage_(high_risk_slippage) {
-        initialize_dex_routers();
-        initialize_tokens();
-    }
-    
-    // Keep your default constructor for backward compatibility
-    RiskEngine() {
         initialize_dex_routers();
         initialize_tokens();
     }
