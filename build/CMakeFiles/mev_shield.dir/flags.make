@@ -6,5 +6,5 @@ CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK
 
 CXX_INCLUDES = -I/home/ubuntu/mev-shield/src
 
-CXX_FLAGS =  -O2 -Wall -Wextra -std=gnu++17
+CXX_FLAGS =  -O2 -Wall -Wextra -O3 -DNDEBUG -std=gnu++17
 
