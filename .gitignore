@@ -1,335 +1,41 @@
-# ============================================
-# MEV Shield Core - Open Source .gitignore
-# ============================================
+# Prerequisites
+*.d
 
-# 🏗️ Build outputs
-build/
-bin/
-*.exe
-*.dll
-*.so
-*.dylib
-*.a
-*.lib
+# Compiled Object files
+*.slo
+*.lo
 *.o
 *.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Linker files
 *.ilk
+
+# Debugger Files
 *.pdb
-*.ipch
-*.sln
-*.vcxproj*
-*.xcodeproj/
-*.xcworkspace/
 
-# 📁 Dependencies
-third_party/
-deps/
-vendor/
-*.tar.gz
-*.zip
-*.tar
-vcpkg/
-conan/
-
-# 🔐 Configuration files with secrets
-config/config.yaml
-config/enterprise.yaml
-config/*.local.yaml
-config/private-*.yaml
-*.env
-.env.local
-.env.production
-.env.development
-.secrets/
-keys/
-certificates/
-
-# 🔑 API Keys and credentials
-*_key
-*_token
-*_secret
-*_password
-*.pem
-*.key
-*.crt
-*.pfx
-*.p12
-*.keystore
-*.jks
-
-# 📊 Logs
-logs/
-*.log
-*.log.*
-logfile*
-*.logs
-
-# 💻 IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-*.sublime-*
-*.code-workspace
-
-# 🫨 OS files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-Desktop.ini
-
-# 💾 Database
-*.db
-*.sqlite
-*.sqlite3
-*.mdb
-*.accdb
-database/
-migrations/
-
-# 💿 Backup files
-backup/
-*.bak
-*.backup
-*.old
-*.tmp
-
-# 📈 Coverage reports
-coverage/
-*.gcov
-*.gcda
-*.gcno
-*.lcov
-htmlcov/
-.coverage
-.coverage.*
-
-# 📚 Documentation builds
-docs/_build/
-site/
-public/
-dist/
-
-# 🐳 Docker
-.dockerignore
-docker-compose.override.yml
-
-# 🧪 Testing
-test_results/
-unit_tests/
-integration_tests/
-*.test
-*.spec
-
-# 📦 Package managers
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-
-# 🐍 Python
-__pycache__/
-*.py[cod]
-*$py.class
+# Compiled Dynamic libraries
 *.so
-.Python
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-pip-log.txt
-pip-delete-this-directory.txt
+*.dylib
+*.dll
 
-# 🦀 Rust
-/target/
-**/*.rs.bk
-Cargo.lock
+# Fortran module files
+*.mod
+*.smod
 
-# 🟦 Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-.pnpm-debug.log*
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
 
-# ☕ Java
-*.class
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-hs_err_pid*
+# Executables
+*.exe
+*.out
+*.app
 
-# 🟨 JavaScript/TypeScript
-dist/
-build/
-*.tsbuildinfo
-.next/
-out/
-.nuxt/
-
-# ⚡ CMake
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
-*.cmake
-!CMakeLists.txt
-
-# 🔧 Compiler-specific
-*.sass-cache
-*.scssc
-.tx/
-config.rb
-
-# 🗂️ Temporary files
-tmp/
-temp/
-*.tmp
-*.temp
-.cache/
-.npm/
-.eslintcache
-.stylelintcache
-*.tgz
-*.tar.gz
-
-# 🎨 Asset files (if any)
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.bmp
-*.tiff
-*.ico
-*.svg
-
-# 📝 License keys (if any)
-*.license
-*.lic
-license.txt
-
-# 🚀 Deployment files
-.deploy/
-.elasticbeanstalk/
-.ebextensions/
-
-# 🔍 Search index
-.ctags
-.tags
-.tags_sorted_by_file
-
-# 🛠️ Development tools
-.clangd/
-.clang-tidy
-.clang-format
-compile_commands.json
-
-# 📊 Analytics and telemetry
-telemetry/
-analytics/
-usage-stats/
-
-# 🧹 Cleanup
-*~
-*.orig
-*.rej
-
-# 🎯 MEV Shield Specific
-# =========================
-
-# API keys for RPC providers
-*alchemy*
-*infura*
-*quicknode*
-*moralis*
-*ankr*
-
-# Wallet private keys
-*privatekey*
-*seed*
-*mnemonic*
-*keystore*
-
-# Trading secrets
-*strategy*
-*bot-config*
-*arbitrage-*
-
-# Monitoring data
-metrics/data/
-prometheus/data/
-grafana/data/
-
-# Cache directories
-.cache/
-mev-cache/
-arbitrage-cache/
-
-# Price feed data
-price-data/
-oracle-cache/
-
-# MEV-specific data
-mev-data/
-flashbots-data/
-arbitrage-opportunities/
-
-# Transaction history
-tx-history/
-mempool-data/
-
-# Risk model data
-risk-models/
-ml-models/
-training-data/
-
-# Backup configurations
-config/backup/
-config/archive/
-
-# User data
-user-data/
-client-data/
-session-data/
-
-# Temporary arbitrage data
-arb-temp/
-swap-simulations/
-
-# Liquidity data
-liquidity-cache/
-pool-data/
-
-# Gas price data
-gas-data/
-mempool-cache/
-
-# Cross-chain data
-cross-chain-cache/
-bridge-data/
-
-# ============================================
-# END OF MEV SHIELD .gitignore
-# ============================================.env.production
-*.env
-.env.production
-*.env
-logs/
+# debug information files
+*.dwo
