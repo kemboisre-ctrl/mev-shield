@@ -1,0 +1,16 @@
+# Prevent accidental commit of sensitive files
+config/config.yaml binary
+config/enterprise.yaml binary
+*.env binary
+*.key binary
+*.pem binary
+
+# Ensure line endings are consistent
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.h text eol=lf
+*.c text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
