@@ -41,3 +41,6 @@
 *.dwo
 .env
 .env.*
+.env
+.env.production
+.env.*
