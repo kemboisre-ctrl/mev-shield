@@ -1,0 +1,3 @@
+/home/ubuntu/mev-shield/build/CMakeFiles/mev_shield.dir
+/home/ubuntu/mev-shield/build/CMakeFiles/edit_cache.dir
+/home/ubuntu/mev-shield/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,61 @@
+# MEV Shield Core - Production Configuration
+version: "1.0.0"
+
+rpc:
+  # Primary Ethereum provider (Infura)
+  ethereum:
+    websocket_url: "wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}"
+    http_url: "https://mainnet.infura.io/v3/${INFURA_API_KEY}"
+    timeout_ms: 5000
+  
+  # Fallback providers
+  fallback_providers:
+    - name: "chainstack"
+      websocket_url: "wss://ethereum-mainnet.core.chainstack.com/da209b1d9caff060958dff7f04e8f673"
+      http_url: "https://ethereum-mainnet.core.chainstack.com/da209b1d9caff060958dff7f04e8f673"
+    - name: "chainstack_beacon"
+      websocket_url: "wss://ethereum-mainnet.core.chainstack.com/beacon/da209b1d9caff060958dff7f04e8f673"
+      http_url: "https://ethereum-mainnet.core.chainstack.com/beacon/da209b1d9caff060958dff7f04e8f673"
+    - name: "public_rpc"
+      websocket_url: "wss://cloudflare-eth.com"
+      http_url: "https://cloudflare-eth.com"
+    - name: "ankr"
+      websocket_url: "wss://rpc.ankr.com/eth/ws"
+      http_url: "https://rpc.ankr.com/eth"
+
+analytics:
+  risk_engine:
+    min_profit_threshold_eth: 0.01
+    high_risk_slippage_percent: 3.0
+    max_simulation_time_ms: 1000
+    max_gas_price_gwei: 150
+
+monitoring:
+  health_check_interval: 30
+  max_reconnect_attempts: 5
+  reconnect_delay_ms: 5000
+
+api:
+  port: 8765
+  max_connections: 100
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://127.0.0.1:3000"
+
+dex:
+  routers:
+    uniswap_v2: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+    uniswap_v3: "0xE592427A0AEce92De3Edee1F18E0157C05861564"
+    sushiswap: "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F"
+
+tokens:
+  weth: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+  dai: "0x6B175474E89094C44Da98b954EedeAC495271d0F"
+  usdc: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+  usdt: "0xdAC17F958D2ee523a2206206994597C13D831ec7"
+
+logging:
+  level: "info"
+  file: "mev_shield.log"
+  max_size_mb: 100
+  max_files: 3

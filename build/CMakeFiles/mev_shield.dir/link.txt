@@ -1,0 +1,1 @@
+/usr/bin/c++  -O2 -Wall -Wextra CMakeFiles/mev_shield.dir/src/main.cpp.o CMakeFiles/mev_shield.dir/src/common/config_loader.cpp.o -o mev_shield  -lpthread -lfmt -lspdlog -lyaml-cpp -ljsoncpp -lboost_system -lboost_thread -lssl -lcrypto -lcurl 

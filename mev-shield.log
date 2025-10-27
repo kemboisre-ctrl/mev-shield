@@ -1,0 +1,38 @@
+nohup: ignoring input
+✅ Environment variables loaded from .env
+
+
+    ███    ███  ███████ ██    ██     ███████ ██   ██ ██  ██████ ██ ██████  ███████ 
+    ████  ████ ██       ██    ██     ██       ██ ██  ██ ██      ██ ██   ██ ██      
+    ██ ████ ██ ███████  ██    ██     █████     ███   ██ ██      ██ ██   ██ █████   
+    ██  ██  ██      ██  ██    ██     ██       ██ ██  ██ ██      ██ ██   ██ ██      
+    ██      ██ ███████   ██████      ███████ ██   ██ ██  ██████ ██ ██████  ███████ 
+    
+    
+MEV Shield Core v1.0.0 - Open Source MEV Protection
+=====================================================
+✅ Configuration loaded successfully from: config/config.yaml
+
+📋 Configuration Summary:
+==========================
+🔗 Primary RPC: wss://eth-mainnet.g.alchemy.com/v2/demo...
+🔄 Fallback Providers (3):
+   • infura: wss://mainnet.infura.io/ws/v3/...
+   • public_rpc: wss://cloudflare-eth.com...
+   • ankr: wss://rpc.ankr.com/eth/ws...
+🎯 Risk Settings:
+   • Min Profit: 0.01 ETH
+   • High Risk Slippage: 3%
+   • Max Simulation Time: 1000ms
+🏦 DEX Support: Uniswap V2/V3, Sushiswap
+💎 Token Support: WETH, DAI, USDC, USDT
+🌐 API Port: 8765
+==========================
+[2025-10-26 17:30:45.251] [info] [main.cpp:73] Starting MEV Shield Core...
+[2025-10-26 17:30:45.252] [info] [main.cpp:84] Using RPC endpoint: wss://eth-mainnet.g.alchemy.com/v2/demo
+[2025-10-26 17:30:45.252] [info] [main.cpp:109] MEV Shield Core initialized successfully
+[2025-10-26 17:30:45.252] [info] [main.cpp:110] Monitoring Ethereum mempool for MEV opportunities...
+[2025-10-26 17:30:45.254] [info] [main.cpp:111] Press Ctrl+C to stop
+
+[2025-10-26 17:30:45.255] [error] [mempool_monitor.hpp:32] WebSocket connection error: endpoint not secure
+[2025-10-26 17:30:45.256] [info] [main.cpp:122] MEV Shield Core stopped gracefully

@@ -1,11 +1,22 @@
-#pragma once
-#include <string>
+#ifndef CONFIG_HPP
+#define CONFIG_HPP
 
-namespace mev_shield {
-    struct Config {
-        std::string rpc_url = "http://localhost:8545";
-        std::string websocket_url = "ws://localhost:8546";
-        std::string log_file = "mev_shield.log";
-        // Add other config options as needed
-    };
-}
+#include <string>
+#include <vector>
+
+struct Config {
+    std::string infura_api_key;
+    std::string alchemy_api_key;
+    std::string quicknode_api_key;
+    std::string ethereum_rpc_url;
+    double min_profit_threshold;
+    double max_slippage_percent;
+    int max_gas_price_gwei;
+    bool enable_monitoring;
+    int websocket_timeout_ms;
+};
+
+Config load_config();
+bool validate_config(const Config& config);
+
+#endif
