@@ -44,7 +44,7 @@ std::string load_websocket_url() {
     
     // Fallback: Hardcoded URL
     std::cout << "⚠️  Using hardcoded WebSocket URL" << std::endl;
-    return "wss://mainnet.infura.io/ws/v3/c4ac605f5f484c73b8135c6f2ad20ec0";
+    return "wss://mainnet.infura.io/ws/v3/YOUR_PROJECT_ID";
 }
 
 int main() {
